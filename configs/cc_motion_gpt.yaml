@@ -1,0 +1,119 @@
+structure:
+    name: SepVQVAE
+    up_half:
+        levels: 1
+        downs_t: [3,]
+        strides_t : [2,]
+        emb_width : 512
+        l_bins : 768
+        l_mu : 0.99
+        commit : 0.02
+        hvqvae_multipliers : [1,]
+        width: 512
+        depth: 3
+        m_conv : 1.0
+        dilation_growth_rate : 3
+        sample_length: 240
+        use_bottleneck: True
+        joint_channel: 3
+        vqvae_reverse_decoder_dilation: True
+    down_half:
+        levels: 1
+        downs_t: [3,]
+        strides_t : [2,]
+        emb_width : 512
+        l_bins : 768
+        l_mu : 0.99
+        commit : 0.02
+        hvqvae_multipliers : [1,]
+        width: 512
+        depth: 3
+        m_conv : 1.0
+        dilation_growth_rate : 3
+        sample_length: 240
+        use_bottleneck: True
+        joint_channel: 3
+        vqvae_reverse_decoder_dilation: True
+    use_bottleneck: True
+    joint_channel: 3
+    
+    
+structure_generate:
+    name: CrossCondGPT2
+    block_size: 30
+    theta: 50
+    k: 10
+    base:
+        embd_pdrop: 0.1
+        resid_pdrop: 0.1
+        attn_pdrop: 0.1
+        vocab_size_up: 768
+        vocab_size_down: 768
+        block_size: 30
+        n_layer: 6
+        n_head: 12
+        n_embd: 768 
+        n_music: 1462
+        n_music_emb: 768
+    head:
+        embd_pdrop: 0.1
+        resid_pdrop: 0.1
+        attn_pdrop: 0.1
+        vocab_size: 768
+        block_size: 30
+        n_layer: 6
+        n_head: 12
+        n_embd: 768
+        vocab_size_up: 768
+        vocab_size_down: 768 
+    n_music: 1462
+    n_music_emb: 768
+    debias_loss: False
+
+loss_weight:
+    mse_weight: 1
+optimizer:
+    type: Adam
+    kwargs:
+        lr: 0.001
+        betas: [0.9, 0.999]
+        weight_decay: 0
+    schedular_kwargs:
+        milestones: [250, 400]
+        gamma: 0.1
+data:
+    name: aist
+    train_dir: data/aistpp_train_wav
+    eval_dir: data/aistpp_eval_wav
+    test_dir: data/aistpp_test_full_wav
+    seq_len: 240
+    data_type: None
+testing:
+    height: 540
+    width: 960
+    ckpt_epoch: 250
+
+vqvae_weight: 'experiments/sep_vqvae/ckpt/epoch_500.pt'
+expname: cc_motion_gpt
+
+
+need_not_train_data: False
+need_not_val_data: False
+need_not_test_data: False
+
+epoch: 500
+batch_size: 96
+
+save_per_epochs: 10
+test_freq: 10
+log_per_updates: 1
+seed: 42
+rotmat: False
+cuda: True
+global_vel: True
+ds_rate: 8
+move: 16
+external_wav: data/aistpp_music_librosa_3.75fps
+external_wav1: data/aistpp_music_mert_3.75fps
+external_wav_rate: 1
+music_normalize: False

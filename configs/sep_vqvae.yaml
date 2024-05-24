@@ -1,0 +1,85 @@
+structure:
+    name: SepVQVAE
+    up_half:
+        levels: 1
+        downs_t: [3,]
+        strides_t : [2,]
+        emb_width : 512
+        l_bins : 768
+        l_mu : 0.99
+        commit : 0.02
+        hvqvae_multipliers : [1,]
+        width: 512
+        depth: 3
+        m_conv : 1.0
+        dilation_growth_rate : 3
+        sample_length: 240
+        use_bottleneck: True
+        joint_channel: 3
+        vqvae_reverse_decoder_dilation: True
+    down_half:
+        levels: 1
+        downs_t: [3,]
+        strides_t : [2,]
+        emb_width : 512
+        l_bins : 768
+        l_mu : 0.99
+        commit : 0.02
+        hvqvae_multipliers : [1,]
+        width: 512
+        depth: 3
+        m_conv : 1.0
+        dilation_growth_rate : 3
+        sample_length: 240
+        use_bottleneck: True
+        joint_channel: 3
+        vqvae_reverse_decoder_dilation: True
+    use_bottleneck: True
+    joint_channel: 3
+
+loss_weight:
+    mse_weight: 1
+optimizer:
+    type: Adam
+    kwargs:
+        lr: 0.00003
+        betas: [0.5, 0.999]
+        weight_decay: 0
+    schedular_kwargs:
+        milestones: [100, 200]
+        gamma: 0.1
+# schedular: []
+data:
+    name: aist   
+    train_dir: data/aistpp_train_wav
+    eval_dir: data/aistpp_eval_wav
+    test_dir: data/aistpp_test_full_wav
+    seq_len: 120
+    data_type: None
+testing:
+    height: 540
+    width: 960
+    ckpt_epoch: 500
+
+
+need_not_train_data: False
+need_not_val_data: False
+need_not_test_data: False
+
+expname: sep_vqvae
+epoch: 500
+batch_size: 128
+save_per_epochs: 20
+test_freq: 20
+log_per_updates: 1
+seed: 42
+rotmat: False
+cuda: True
+global_vel: False
+ds_rate: 8
+move_train: 40
+external_wav: data/aistpp_music_librosa_3.75fps
+external_wav1: data/aistpp_music_mert_3.75fps
+sample_code_length: 150
+sample_code_rate: 16
+analysis_sequence: [[126, 81]]
