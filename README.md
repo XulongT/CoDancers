@@ -2,7 +2,7 @@
 
 Code for ICMR 2024 paper "CoDancers: Music-Driven Coherent Group Dance Generation"
 
-[[Paper]](TODO) | [[Video Demo]](https://youtu.be/ZETMiNsC93g?si=ig5LIbDzcSybN0EX)
+[[Paper]](https://dl.acm.org/doi/10.1145/3652583.3657998) | [[Video Demo]](https://youtu.be/ZETMiNsC93g?si=ig5LIbDzcSybN0EX)
 
 <a href="https://www.youtube.com/watch?v=ZETMiNsC93g" target="_blank">
     <img src="https://github.com/XulongT/CoDancers/blob/main/demo/play_demo.png" alt="Watch the video" width="400"/>
@@ -104,5 +104,10 @@ Our code is based on [Bailando](https://github.com/lisiyao21/Bailando/tree/main)
 
 # Citation
 
-    @inproceedings{todo
+    @inproceedings{yang2024codancers,
+      title={CoDancers: Music-Driven Coherent Group Dance Generation with Choreographic Unit},
+      author={Yang, Kaixing and Tang, Xulong and Diao, Ran and Liu, Hongyan and He, Jun and Fan, Zhaoxin},
+      booktitle={Proceedings of the 2024 International Conference on Multimedia Retrieval},
+      pages={675--683},
+      year={2024}
     }
