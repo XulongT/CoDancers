@@ -31,9 +31,9 @@ To set up the necessary environment for running the project, follow these steps:
 
 ## Download
 
-Directly download our preprocessed feature from [here](https://drive.google.com/file/d/1KGCeQMH3dy62zwKDXafb8ToenbY-RBuC/view?usp=drive_link) into ./data folder.
+Directly download our preprocessed feature from [here](https://drive.google.com/file/d/15-RGCdBNkAZy1chCYSrIRcSgcFJBHdtO/view?usp=drive_link) into ./data folder.
 
-To test with our pretrained models, please download the weights from [here](https://drive.google.com/file/d/1AtxnGhVQ7Wa-i5obwqIY8mQGvoqHg4jO/view?usp=drive_link) (Google Drive) and place them into ./experiments folder.
+To test with our pretrained models, please download the weights from [here](https://drive.google.com/file/d/1Y7ayqi_piClcP1eW_HI9uxnVPuLtiyF1/view?usp=drive_link) (Google Drive) and place them into ./experiments folder.
 
 ## Directory Structure
 
